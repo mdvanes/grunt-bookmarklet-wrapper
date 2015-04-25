@@ -43,8 +43,10 @@ module.exports = function (grunt) {
                 }
             }).map(function (filepath) {
                 // Read file source.
-                return grunt.file.read(filepath);
-            }).join('');   //grunt.util.normalizelf(options.separator));
+                var content = grunt.file.read(filepath);
+                // Url encode file content
+                return encodeURI(content);
+            }).join('');
 
             // Handle options.
             //src += options.punctuation;
