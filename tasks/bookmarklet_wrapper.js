@@ -5,6 +5,7 @@
  * Copyright (c) 2015 M.D. van Es
  * Licensed under the MIT license.
  */
+/* jshint scripturl:true */
 
 'use strict';
 
@@ -26,8 +27,8 @@ module.exports = function (grunt) {
     grunt.registerMultiTask('bookmarklet_wrapper', 'Escape, concatenate and wrap JavaScript files to be executed as a bookmarklet.', function () {
         // Merge task-specific and/or target-specific options with these defaults.
         var options = this.options({
-            //punctuation: '.',
-            //separator: ', '
+            // TODO punctuation: '.',
+            // TODO separator: ', '
         });
 
         // Iterate over all specified file groups.
@@ -49,7 +50,10 @@ module.exports = function (grunt) {
             }).join('');
 
             // Handle options.
-            //src += options.punctuation;
+            // TODO src += options.punctuation;
+
+            // Wrap in bookmarklet wrapper
+            src = 'javascript:(function(){' + src + '})();';
 
             // Write the destination file.
             grunt.file.write(f.dest, src);
