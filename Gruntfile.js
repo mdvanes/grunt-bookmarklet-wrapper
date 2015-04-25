@@ -33,7 +33,7 @@ module.exports = function (grunt) {
         // Configuration to be run (and then tested).
         bookmarklet_wrapper: {
             default_options: {
-                options: {},
+                // TODO options: {},
                 files: {
                     'tmp/default_options': ['test/fixtures/testing', 'test/fixtures/123']
                 }
@@ -41,7 +41,7 @@ module.exports = function (grunt) {
             custom_options: {
                 options: {
                     banner: '\r\n/*! <%= pkg.name %> by <%= pkg.author.name %> */'
-                    //separator: ': ',
+                    // TODO separator: ': ',
                     //punctuation: ' !!!'
                 },
                 files: {

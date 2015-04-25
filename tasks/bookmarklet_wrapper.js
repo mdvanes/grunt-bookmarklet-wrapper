@@ -11,12 +11,8 @@
 
 module.exports = function (grunt) {
 
-    // Please see the Grunt documentation for more information regarding task
-    // creation: http://gruntjs.com/creating-tasks
-
 
     /*
-     TODO what should it do:
      - concatenate a list of files without adding newlines. (no uglify) - the use is to append code that is only for running the code as a bookmarklet
      - urlencode the result
      - wrap in ```javascript:(function(){ ... })();```
