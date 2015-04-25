@@ -1,4 +1,6 @@
 var testing = function() {
     /* Characters eligible for url encoding */
     var chars =' !#$&()*+,/:;=?@[]';
+    console.log(chars);
 }
+testing();
