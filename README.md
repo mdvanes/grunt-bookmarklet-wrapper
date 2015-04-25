@@ -92,3 +92,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 _(Nothing yet)_
+
+## To Do
+
+To test: is it required to remove // comments? Because everything is put on one line, to they comment all following code even after urlencoded newlines?
