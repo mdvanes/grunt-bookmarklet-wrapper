@@ -112,7 +112,3 @@ Follow the jshintrc settings for the code style. Add unit tests for any new or c
                            test script-targeted urls, but manual tests were successful.
 * 2015-04-25    v0.2.0     Minor fixes, documentation updates
 * 2015-04-25    v0.1.0     Initial release
-
-## To Do
-
-* Add executability test of generated code
