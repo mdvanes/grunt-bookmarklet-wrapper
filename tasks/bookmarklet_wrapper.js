@@ -21,14 +21,15 @@ module.exports = function (grunt) {
      - urlencode the result
      - wrap in ```javascript:(function(){ ... })();```
      - add optional "banner". banner is appended at the end, because it will conflict with the ```javascript:``` prefix
+
+     add executability test of generated code?
      */
 
 
     grunt.registerMultiTask('bookmarklet_wrapper', 'Escape, concatenate and wrap JavaScript files to be executed as a bookmarklet.', function () {
         // Merge task-specific and/or target-specific options with these defaults.
         var options = this.options({
-            // TODO punctuation: '.',
-            // TODO separator: ', '
+            banner: ''
         });
 
         // Iterate over all specified file groups.
@@ -49,11 +50,11 @@ module.exports = function (grunt) {
                 return encodeURI(content);
             }).join('');
 
-            // Handle options.
-            // TODO src += options.punctuation;
-
             // Wrap in bookmarklet wrapper
             src = 'javascript:(function(){' + src + '})();';
+
+            // Append banner
+            src += options.banner;
 
             // Write the destination file.
             grunt.file.write(f.dest, src);
