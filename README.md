@@ -107,10 +107,12 @@ Follow the jshintrc settings for the code style. Add unit tests for any new or c
 
 ## Release History
 
-* 2015-04-25    v0.2.0     minor fixes, documentation updates
-* 2015-04-25    v0.1.0     initial release
+* 2015-04-25    v1.0.0     Extended and successfully ran unit tests. It's not required to remove inline comments (//),
+                           code after line breaks is still executed. There doesn't seem to be a way to programmatically
+                           test script-targeted urls, but manual tests were successful.
+* 2015-04-25    v0.2.0     Minor fixes, documentation updates
+* 2015-04-25    v0.1.0     Initial release
 
 ## To Do
 
 * Add executability test of generated code
-* Test if is it required to remove // comments. Because everything is put on one line, to they comment all following code even after urlencoded newlines?
