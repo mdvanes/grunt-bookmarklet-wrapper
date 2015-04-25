@@ -2,6 +2,10 @@
 
 > Escape, concatenate and wrap JavaScript files to be executed as a bookmarklet.
 
+TODO there is also a grunt plugin grunt-bookmarklet-thingy, but it is has no documentation and I have no
+idea what it does exactly. Also I needed certain features so I wrote this new plugin.
+
+
 ## Getting Started
 This plugin requires Grunt `~0.4.5`
 
@@ -16,6 +20,8 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 ```js
 grunt.loadNpmTasks('grunt-bookmarklet-wrapper');
 ```
+
+Although I recommend using [load-grunt-tasks](https://www.npmjs.com/package/load-grunt-tasks)
 
 ## The "bookmarklet_wrapper" task
 
