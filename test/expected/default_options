@@ -1,1 +1,1 @@
-var%20testing%20=%20function()%20%7B%0D%0A%20%20%20%20/*%20Characters%20eligible%20for%20url%20encoding%20*/%0D%0A%20%20%20%20var%20chars%20='%20!#$&()*+,/:;=?@%5B%5D';%0D%0A%7Dvar%20x%20=%20%221%202%203%22;
+javascript:(function(){var%20testing%20=%20function()%20%7B%0D%0A%20%20%20%20/*%20Characters%20eligible%20for%20url%20encoding%20*/%0D%0A%20%20%20%20var%20chars%20='%20!#$&()*+,/:;=?@%5B%5D';%0D%0A%7Dvar%20x%20=%20%221%202%203%22;})();
