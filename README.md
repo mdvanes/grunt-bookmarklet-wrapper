@@ -1,6 +1,6 @@
 # grunt-bookmarklet-wrapper
 
-> Escape, concatenate and wrap JavaScript files to be executed as a bookmarklet.
+> Grunt task to urlencode, concatenate and wrap JavaScript files to prepare for execution as a bookmarklet.
 
 There is also a grunt plugin [grunt-bookmarklet-thingy](https://github.com/justspamjustin/grunt-bookmarklet-thingy), but it is has no documentation and I have no
 idea what it does exactly. Also I needed certain features so I wrote this new plugin.
@@ -32,67 +32,85 @@ grunt.initConfig({
   bookmarklet_wrapper: {
     options: {
       // Task-specific options go here.
+      banner: '\n/*! <%= pkg.name %> by <%= pkg.author.name %> */'
     },
     your_target: {
       // Target-specific file lists and/or options go here.
+      files: {
+        'foo-bookmarklet.js': ['foo1.js', 'foo2.js']
+      }
     },
   },
 });
 ```
 
+Example output:
+
+```js
+javascript:(function(){alert('foo%20bar');})();
+```
+
+### Properties
+
+#### files
+A key/value pair is accepted. The key is the path to the output file as a String, the value an array of
+Strings, the paths of the input files that will be urlencoded and concatenated.
+
 ### Options
 
-#### options.separator
+#### options.banner
 Type: `String`
-Default value: `',  '`
+Default value: `''`
 
-A string value that is used to do something with whatever.
-
-#### options.punctuation
-Type: `String`
-Default value: `'.'`
-
-A string value that is used to do something else with whatever else.
+A string value that is appended as banner. The banner is appended to the generated code, because it will conflict with the
+```javascript:``` prefix if it is prepended.
 
 ### Usage Examples
 
 #### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
+In this example, the fixture files are urlencoded and concatenated. Then they are wrapped in an script-targed url IIFE.
+So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`,
+the generated result would be `javascript:(function(){Testing1%202%203})();`.
 
 ```js
 grunt.initConfig({
-  bookmarklet_wrapper: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
+    bookmarklet_wrapper: {
+        default_options: {
+            files: {
+                'tmp/default_options': ['test/fixtures/testing', 'test/fixtures/123']
+            }
+        }
+    }
 });
 ```
 
 #### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
+In this example, an option is added to append a banner to the processed code.
 
 ```js
 grunt.initConfig({
-  bookmarklet_wrapper: {
-    options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
+    bookmarklet_wrapper: {
+        custom_options: {
+            options: {
+                banner: '\r\n/*! <%= pkg.name %> by <%= pkg.author.name %> */'
+            },
+            files: {
+                'tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/123']
+            }
+        }
+    }
 });
 ```
 
 ## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
+Follow the jshintrc settings for the code style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-_(Nothing yet)_
+
+* 2015-04-25    v0.2.0     minor fixes, documentation updates
+* 2015-04-25    v0.1.0     initial release
 
 ## To Do
 
-To test: is it required to remove // comments? Because everything is put on one line, to they comment all following code even after urlencoded newlines?
+* Add executability test of generated code
+* Test if is it required to remove // comments. Because everything is put on one line, to they comment all following code even after urlencoded newlines?
