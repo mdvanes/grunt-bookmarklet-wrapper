@@ -12,6 +12,8 @@ module.exports = function (grunt) {
 
     // Project configuration.
     grunt.initConfig({
+        pkg: grunt.file.readJSON('package.json'),
+
         jshint: {
             all: [
                 'Gruntfile.js',
@@ -35,17 +37,17 @@ module.exports = function (grunt) {
                 files: {
                     'tmp/default_options': ['test/fixtures/testing', 'test/fixtures/123']
                 }
+            },
+            custom_options: {
+                options: {
+                    banner: '\r\n/*! <%= pkg.name %> by <%= pkg.author.name %> */'
+                    //separator: ': ',
+                    //punctuation: ' !!!'
+                },
+                files: {
+                    'tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/123']
+                }
             }
-            //custom_options: {
-            //    options: {
-            //        banner:
-            //        //separator: ': ',
-            //        //punctuation: ' !!!'
-            //    },
-            //    files: {
-            //        'tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/123']
-            //    }
-            //}
         },
 
         // Unit tests.
