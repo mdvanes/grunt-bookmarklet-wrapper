@@ -1,7 +1,7 @@
 {
   "name": "grunt-bookmarklet-wrapper",
-  "description": "Escape, concatenate and wrap JavaScript files to be executed as a bookmarklet.",
-  "version": "0.1.0",
+  "description": "Grunt task to urlencode, concatenate and wrap JavaScript files to prepare for execution as a bookmarklet.",
+  "version": "0.2.0",
   "homepage": "https://github.com/mdvanes/grunt-bookmarklet-wrapper",
   "author": {
     "name": "M.D. van Es",
