@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/mdvanes/grunt-bookmarklet-wrapper.svg?branch=master)]
+
 # grunt-bookmarklet-wrapper
 
 > Grunt task to urlencode, concatenate and wrap JavaScript files to prepare for execution as a bookmarklet.
