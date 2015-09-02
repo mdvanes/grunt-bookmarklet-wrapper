@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/mdvanes/grunt-bookmarklet-wrapper.svg?branch=master)]
+![Build Status](https://travis-ci.org/mdvanes/grunt-bookmarklet-wrapper.svg?branch=master)
 
 # grunt-bookmarklet-wrapper
 
