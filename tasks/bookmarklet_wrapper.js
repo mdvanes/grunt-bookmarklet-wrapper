@@ -17,6 +17,8 @@ module.exports = function (grunt) {
      - urlencode the result
      - wrap in ```javascript:(function(){ ... })();```
      - add optional "banner". banner is appended at the end, because it will conflict with the ```javascript:``` prefix
+     - add optional "banner_prefix". banner_prefix is prepended and must not contain newlines
+     - add optional "as_json": true. output will be a json {"href":"bookmarklet"} for generic loading in webapps
 
      add executability test of generated code?
      */
@@ -25,7 +27,9 @@ module.exports = function (grunt) {
     grunt.registerMultiTask('bookmarklet_wrapper', 'Escape, concatenate and wrap JavaScript files to be executed as a bookmarklet.', function () {
         // Merge task-specific and/or target-specific options with these defaults.
         var options = this.options({
-            banner: ''
+            banner: '',
+            banner_prefix: '',
+            as_json: false
         });
 
         // Iterate over all specified file groups.
@@ -46,8 +50,20 @@ module.exports = function (grunt) {
                 return encodeURI(content);
             }).join('');
 
+            // Add prefix to source (eg a banner to read the tooltip, must not contain newlines)
+            if (options.prefix_banner) {
+                src = prefix + src;
+            }
+
             // Wrap in bookmarklet wrapper
             src = 'javascript:(function(){' + src + '})();';
+            
+            if (options.as_json) {
+                js_src = {
+                    "href": src
+                };
+                src = JSON.stringify(js_src);
+            }
 
             // Append banner
             src += options.banner;
