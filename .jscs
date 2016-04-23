@@ -1,0 +1,7 @@
+{
+    "disallowMixedSpacesAndTabs": true,
+    "requireCamelCaseOrUpperCaseIdentifiers": true,
+    "requireCapitalizedConstructors": true,
+    "validateIndentation": 4,
+    "validateQuoteMarks": "'"
+}

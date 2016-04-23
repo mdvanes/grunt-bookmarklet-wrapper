@@ -16,14 +16,25 @@ module.exports = function (grunt) {
         pkg: grunt.file.readJSON('package.json'),
 
         jshint: {
+            options: {
+                jshintrc: '.jshintrc'
+            },
             all: [
                 'Gruntfile.js',
                 'tasks/*.js',
                 '<%= nodeunit.tests %>'
-            ],
+            ]
+        },
+
+        jscs: {
             options: {
-                jshintrc: '.jshintrc'
-            }
+                config: '.jscs'
+            },
+            all: [
+                'Gruntfile.js',
+                'tasks/*.js',
+                '<%= nodeunit.tests %>'
+            ]
         },
 
         // Before generating any new files, remove any previously-created files.
@@ -32,15 +43,15 @@ module.exports = function (grunt) {
         },
 
         // Configuration to be run (and then tested).
-        bookmarklet_wrapper: {
-            default_options: {
+        'bookmarklet_wrapper': {
+            defaultOptions: {
                 files: {
                     'tmp/default_options': ['test/fixtures/testing', 'test/fixtures/123']
                 }
             },
-            custom_options: {
+            customOptions: {
                 options: {
-                    banner: '\r\n/*! <%= pkg.name %> by <%= pkg.author.name %> */'
+                    banner: '/*! <%= pkg.name %> by <%= pkg.author.name %> */'
                 },
                 files: {
                     'tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/123']
@@ -63,6 +74,6 @@ module.exports = function (grunt) {
     grunt.registerTask('test', ['clean', 'bookmarklet_wrapper', 'nodeunit']);
 
     // By default, lint and run all tests.
-    grunt.registerTask('default', ['jshint', 'test']);
+    grunt.registerTask('default', ['jshint', 'jscs', 'test']);
 
 };

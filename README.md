@@ -8,7 +8,7 @@ There is also a grunt plugin [grunt-bookmarklet-thingy](https://github.com/justs
 idea what it does exactly. Also I needed certain features so I wrote this new plugin.
 
 ## Getting Started
-This plugin requires Grunt `~0.4.5`
+This plugin requires Grunt `~1.0.1`
 
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
@@ -64,37 +64,29 @@ Strings, the paths of the input files that will be urlencoded and concatenated.
 Type: `String`
 Default value: `''`
 
-A string value that is appended as banner. The banner is appended to the generated code, because it will conflict with the
-```javascript:``` prefix if it is prepended.
-
-#### options.banner_prefix
-Type: `String`
-Default value: `''`
-
-A string value that is prepended as banner. The banner is prepended to the generated code, and should be a comment or otherwise work well with the generated, escaped bookmarklet
+A string value that is prepended as banner. The banner is prepended to the generated code, and should be a comment with an end-tag or otherwise work well with the generated, escaped bookmarklet.
 
 ```js
-options.banner_prefix = '/** (c) company-name */'
+options.banner_prefix = '/*! Bookmarklet <%= pkg.version %> */'
 ```
 
 Example output:
 
 ```js
-javascript:(function(){/** (c) company-name */alert('foo%20bar');})();
+javascript:(function(){/*! Bookmarklet 1.0.0 */alert('foo%20bar');})();
 ```
 
-#### options.as_json
+#### options.asJson
 Type: `Boolean`
 Default value: `false`
 
-Generate a JSON file that contains a object with the bookmarklet stored in the attribute `href`.
+Generate a JSON file that contains an object with the bookmarklet stored in the attribute `href`.
 
 Example output:
 
 ```js
 {"href": "javascript:(function(){alert('foo%20bar');})();"}
 ```
-
 
 
 ### Usage Examples
@@ -139,6 +131,7 @@ Follow the jshintrc settings for the code style. Add unit tests for any new or c
 
 ## Release History
 
+* 2016-04-23    v1.2.0     Merged PR from [git-j](https://github.com/git-j), updating dependencies and modifying banner to work as a prefix. 
 * 2015-04-25    v1.0.0     Extended and successfully ran unit tests. It's not required to remove inline comments (//),
                            code after line breaks is still executed. There doesn't seem to be a way to programmatically
                            test script-targeted urls, but manual tests were successful.
