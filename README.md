@@ -67,6 +67,36 @@ Default value: `''`
 A string value that is appended as banner. The banner is appended to the generated code, because it will conflict with the
 ```javascript:``` prefix if it is prepended.
 
+#### options.banner_prefix
+Type: `String`
+Default value: `''`
+
+A string value that is prepended as banner. The banner is prepended to the generated code, and should be a comment or otherwise work well with the generated, escaped bookmarklet
+
+```js
+options.banner_prefix = '/** (c) company-name */'
+```
+
+Example output:
+
+```js
+javascript:(function(){/** (c) company-name */alert('foo%20bar');})();
+```
+
+#### options.as_json
+Type: `Boolean`
+Default value: `false`
+
+Generate a JSON file that contains a object with the bookmarklet stored in the attribute `href`.
+
+Example output:
+
+```js
+{"href": "javascript:(function(){alert('foo%20bar');})();"}
+```
+
+
+
 ### Usage Examples
 
 #### Default Options
